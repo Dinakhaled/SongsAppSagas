@@ -1,11 +1,12 @@
 import React from 'react';
-import CreateNewSong from './Songs/CreateNewSong';
+import Routes from '../Routes';
+import { BrowserRouter as Router } from "react-router-dom";
 
 const App = () => {
     return (
-        <React.Fragment>
-            <CreateNewSong />
-        </React.Fragment>
+        <Router>
+            {Routes}
+        </Router>
     )
 }
 

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './CreateNewSong.scss';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { createSong } from '../../Redux/actions';
+import { Link } from "react-router-dom";
 
 class CreateNewSong extends Component {
     constructor(props) {
@@ -29,19 +32,22 @@ class CreateNewSong extends Component {
         ) 
     }
 
-    onSubmit(formValues) {
-        console.log(formValues);
-        
+    onSubmit = (formValues) => {
+        this.props.createSong(formValues);
     }
 
     render() { 
         return ( 
             <React.Fragment>
-                <form className="ui form container create-form error" onSubmit={this.props.handleSubmit(this.onSubmit)}>
-                    <Field name="title" component={this.renderInputs} label="Enter song name "/>
-                    <Field name="artist" component={this.renderInputs} label="Enter singer name "/>
-                    <button className="ui button primary">Submit</button>
-                </form>
+                <div className="ui container">
+                    <form className="ui container form create-form error" onSubmit={this.props.handleSubmit(this.onSubmit)}>
+                        <Field name="title" component={this.renderInputs} label="Enter song name "/>
+                        <Field name="artist" component={this.renderInputs} label="Enter singer name "/>
+                        <button className="ui button primary margin-btn">Submit</button>
+                    </form>
+                    <div className="ui divider"></div>
+                    <Link to="/" className="ui button primary">Songs</Link>
+                </div>
             </React.Fragment>
          );
     }
@@ -59,8 +65,10 @@ const validate = (formValues) => {
     }
     return errors;
 }
- 
-export default reduxForm({
+
+const formWrapped = reduxForm({
     form: 'CreateNewSong',
     validate,
-})(CreateNewSong);
+})(CreateNewSong)
+
+export default connect(null, { createSong })(formWrapped);
