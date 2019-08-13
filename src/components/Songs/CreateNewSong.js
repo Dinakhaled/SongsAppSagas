@@ -39,8 +39,8 @@ class CreateNewSong extends Component {
     render() { 
         return ( 
             <React.Fragment>
-                <div className="ui container">
-                    <form className="ui container form create-form error" onSubmit={this.props.handleSubmit(this.onSubmit)}>
+                <div>
+                    <form className="ui container form error" onSubmit={this.props.handleSubmit(this.onSubmit)}>
                         <Field name="title" component={this.renderInputs} label="Enter song name "/>
                         <Field name="artist" component={this.renderInputs} label="Enter singer name "/>
                         <button className="ui button primary margin-btn">Submit</button>
