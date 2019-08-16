@@ -33,8 +33,14 @@ class SongsList extends Component {
     renderButtons = (song) => {
         return (
             <div className="right floated content">
-                <Link to={`/songs/edit/${song.id}`} className="ui button primary">Edit</Link>
-                <Link to="" className="ui button negative">Delete</Link>
+                <Link 
+                to={`/songs/edit/${song.id}`} 
+                className="ui button primary">
+                Edit</Link>
+                <Link 
+                to={`/songs/delete/${song.id}`} 
+                className="ui button negative">
+                    Delete</Link>
             </div>
         )
     }

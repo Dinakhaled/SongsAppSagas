@@ -55,4 +55,5 @@ export const deleteSong = (id) => async (dispatch) => {
         type: DELETE_SONG,
         payload: id
     })
+    history.push('/');
 }

@@ -18,12 +18,6 @@ class SongEdit extends Component {
         this.props.editSong(this.props.match.params.id, formValues);
     }
 
-    renderSongData = (song) => {
-        return (
-            <div>{song.title}</div>
-        );
-    }
-
     render() { 
         if(!this.props.song) {
             return <div>Loading...</div>

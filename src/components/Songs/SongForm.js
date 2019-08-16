@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './SongForm.scss';
 import { Field, reduxForm } from 'redux-form';
-// import { connect } from 'react-redux';
-// import { createSong } from '../../Redux/actions';
 import { Link } from "react-router-dom";
 
 class SongForm extends Component {
