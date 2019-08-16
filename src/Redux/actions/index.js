@@ -6,6 +6,7 @@ import {
     DELETE_SONG,
     EDIT_SONG
 } from './types';
+import history from '../../history';
 
 export const createSong = (formValues) => {
     return async (dispatch) => {
@@ -15,6 +16,7 @@ export const createSong = (formValues) => {
             payload: response.data
         })
         // Navigate the user after success request 
+        history.push('/')
     }
 }
 
@@ -37,11 +39,14 @@ export const fetchSong = (id) => async (dispatch) => {
 }
 
 export const editSong = (id, formValues) => async (dispatch) => {
-    const response = await songs.put(`/songs/${id}`, formValues);
+    // put => is update all properties of a record
+    // patch => is update some properties of a record
+    const response = await songs.patch(`/songs/${id}`, formValues);
     dispatch({
         type: EDIT_SONG,
         payload: response.data
     })
+    history.push('/');
 }
 
 export const deleteSong = (id) => async (dispatch) => {

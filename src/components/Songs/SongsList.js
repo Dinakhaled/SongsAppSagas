@@ -17,7 +17,7 @@ class SongsList extends Component {
         return this.props.songs.map( song => {
             return (
                 <div className="item" key={song.id}>
-                    {this.renderButtons()}
+                    {this.renderButtons(song)}
                     <i className="large middle aligned icon soundcloud" />
                     <div className="content"> 
                         {song.title}
@@ -30,17 +30,17 @@ class SongsList extends Component {
         })
     }
 
-    renderButtons = () => {
+    renderButtons = (song) => {
         return (
             <div className="right floated content">
-                <button className="ui button primary">Edit</button>
-                <button className="ui button negative">Delete</button>
+                <Link to={`/songs/edit/${song.id}`} className="ui button primary">Edit</Link>
+                <Link to="" className="ui button negative">Delete</Link>
             </div>
         )
     }
 
     render() { 
-        console.log(this.props.songs)
+        // console.log(this.props.songs)
         return ( 
             <React.Fragment>
                 <div className="ui celled list">
