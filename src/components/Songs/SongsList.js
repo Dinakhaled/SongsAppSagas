@@ -20,7 +20,9 @@ class SongsList extends Component {
                     {this.renderButtons(song)}
                     <i className="large middle aligned icon soundcloud" />
                     <div className="content"> 
-                        {song.title}
+                        <Link to={`/songs/${song.id}`} className="header">
+                            {song.title}
+                        </Link>
                         <div className="description">
                             {song.artist}
                         </div>

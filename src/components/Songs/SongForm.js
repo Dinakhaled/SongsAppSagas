@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './SongForm.scss';
 import { Field, reduxForm } from 'redux-form';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 class SongForm extends Component {
     constructor(props) {
@@ -43,8 +43,8 @@ class SongForm extends Component {
                         <Field name="artist" component={this.renderInputs} label="Enter singer name "/>
                         <button className="ui button primary margin-btn">Submit</button>
                     </form>
-                    <div className="ui divider"></div>
-                    <Link to="/" className="ui button primary">Songs</Link>
+                    {/* <div className="ui divider"></div>
+                    <Link to="/" className="ui button primary">Songs</Link> */}
                 </div>
             </React.Fragment>
          );
