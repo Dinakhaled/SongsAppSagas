@@ -15,13 +15,16 @@
     "react-scripts": "2.1.8",
     "redux": "4.0.4",
     "redux-form": "8.1.0",
-    "redux-thunk": "2.3.0"
+    "redux-thunk": "2.3.0",
+    "homepage": "http://dinakhaled.github.io/SongsApp"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -31,5 +34,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "gh-pages": "^2.1.1"
+  }
 }
