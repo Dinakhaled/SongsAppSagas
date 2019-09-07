@@ -1,5 +1,5 @@
 {
-  "name": "SongsApp",
+  "name": "songs-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,9 +15,9 @@
     "react-scripts": "2.1.8",
     "redux": "4.0.4",
     "redux-form": "8.1.0",
-    "redux-thunk": "2.3.0",
-    "homepage": "http://dinakhaled.github.io/SongsApp"
+    "redux-thunk": "2.3.0"
   },
+  "homepage": "http://dinakhaled.github.io/SongsApp",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
