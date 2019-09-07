@@ -1,5 +1,5 @@
 import songs from '../apis/songs';
-import { 
+import {
     CREATE_SONG,
     FETCH_SONG,
     FETCH_SONGS,
@@ -46,6 +46,8 @@ export const editSong = (id, formValues) => async (dispatch) => {
         type: EDIT_SONG,
         payload: response.data
     })
+    console.log(history);
+
     history.push('/');
 }
 

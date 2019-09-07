@@ -6,20 +6,21 @@ import { createSong } from '../../Redux/actions';
 class CreateNewSong extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = {}
     }
+
 
     onSubmit = (formValues) => {
         this.props.createSong(formValues);
     }
 
-    render() { 
-        return ( 
+    render() {
+        return (
             <React.Fragment>
                 <h3>Create new song</h3>
-                <SongForm onSubmit={this.onSubmit}/>
+                <SongForm onSubmit={this.onSubmit} />
             </React.Fragment>
-         );
+        );
     }
 }
 
