@@ -4,7 +4,8 @@ import {
     FETCH_SONG,
     FETCH_SONGS,
     DELETE_SONG,
-    EDIT_SONG
+    EDIT_SONG,
+    FETCH_SONGS_REQUEST
 } from './types';
 import history from '../../history';
 
@@ -20,15 +21,22 @@ export const createSong = (formValues) => {
     }
 }
 
-export const fetchSongs = () => {
-    return async (dispatch) => {
-        const response = await songs.get('/songs');
-        dispatch({
-            type: FETCH_SONGS,
-            payload: response.data
-        })
-    }
-}
+// export const fetchSongs = () => {
+//     return async (dispatch) => {
+//         const response = await songs.get('/songs');
+//         dispatch({
+//             type: FETCH_SONGS,
+//             payload: response.data
+//         })
+//     }
+// }
+export const fetchSongs = songs => ({
+    type: FETCH_SONGS,
+    payload: songs,
+});
+export const fetchSongsReq = () => ({
+    type: FETCH_SONGS_REQUEST,
+});
 
 export const fetchSong = (id) => async (dispatch) => {
     const response = await songs.get(`/songs/${id}`);

@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import{ connect } from 'react-redux';
-import { fetchSongs } from '../../Redux/actions';
+import { connect } from 'react-redux';
+import { fetchSongsReq } from '../../Redux/actions';
 
 class SongsList extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = {}
     }
 
-    componentDidMount() {    
-        this.props.fetchSongs();
+    componentDidMount() {
+        this.props.fetchSongsReq();
     }
 
     renderListOfSongs = () => {
-        return this.props.songs.map( song => {
+        return this.props.songs.map(song => {
             return (
                 <div className="item" key={song.id}>
                     {this.renderButtons(song)}
                     <i className="large middle aligned icon soundcloud" />
-                    <div className="content"> 
+                    <div className="content">
                         <Link to={`/songs/${song.id}`} className="header">
                             {song.title}
                         </Link>
@@ -35,21 +35,20 @@ class SongsList extends Component {
     renderButtons = (song) => {
         return (
             <div className="right floated content">
-                <Link 
-                to={`/songs/edit/${song.id}`} 
-                className="ui button primary">
-                Edit</Link>
-                <Link 
-                to={`/songs/delete/${song.id}`} 
-                className="ui button negative">
+                <Link
+                    to={`/songs/edit/${song.id}`}
+                    className="ui button primary">
+                    Edit</Link>
+                <Link
+                    to={`/songs/delete/${song.id}`}
+                    className="ui button negative">
                     Delete</Link>
             </div>
         )
     }
 
-    render() { 
-        // console.log(this.props.songs)
-        return ( 
+    render() {
+        return (
             <React.Fragment>
                 <div className="ui celled list">
                     {this.renderListOfSongs()}
@@ -62,10 +61,12 @@ class SongsList extends Component {
 }
 
 const mapStateToProps = state => {
+    console.log(state);
+
     return { songs: Object.values(state.songs) };
 };
- 
+
 export default connect(
     mapStateToProps,
-    { fetchSongs }
-    )(SongsList);
+    { fetchSongsReq }
+)(SongsList);
