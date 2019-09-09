@@ -16,5 +16,4 @@ export function* fetchSongsSaga(action) {
     const data = yield call(fetchData);
     console.log(data);
     yield put(fetchSongs(data))
-
 }
