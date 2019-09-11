@@ -1,37 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchSong, editSong } from '../../Redux/actions';
+import { fetchSongReq, editSongReq } from '../../Redux/actions';
 import SongForm from './SongForm';
 import _ from 'lodash';
 
 class SongEdit extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = {}
     }
 
     componentDidMount() {
-        this.props.fetchSong(this.props.match.params.id);
+        this.props.fetchSongReq(this.props.match.params.id);
     }
 
     onSubmit = (formValues) => {
-        this.props.editSong(this.props.match.params.id, formValues);
+        this.props.editSongReq(this.props.match.params.id, formValues);
     }
 
-    render() { 
-        if(!this.props.song) {
+    render() {
+        if (!this.props.song) {
             return <div>Loading...</div>
         }
-        return ( 
+        return (
             <React.Fragment>
                 <h3>Edit a song</h3>
-                <SongForm 
+                <SongForm
                     // This is a known attr from redux-form that fill the initial values of the fields
                     // ._pick is for just pick the fields value that we want and don't include id, user and so on ....
                     initialValues={_.pick(this.props.song, 'title', 'artist')}
                     onSubmit={this.onSubmit} />
             </React.Fragment>
-         );
+        );
     }
 }
 
@@ -39,4 +39,4 @@ const mapStateToProps = (state, ownProps) => {
     return { song: state.songs[ownProps.match.params.id] };
 }
 
-export default connect(mapStateToProps, { fetchSong, editSong })(SongEdit);
+export default connect(mapStateToProps, { fetchSongReq, editSongReq })(SongEdit);

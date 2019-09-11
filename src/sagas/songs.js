@@ -1,20 +1,50 @@
 import { put, call } from 'redux-saga/effects';
-import * as actionTypes from '../Redux/actions/types';
-import { fetchSongs } from '../Redux/actions';
+import { fetchSongs, createSong, fetchSong, editSong } from '../Redux/actions';
+import API from '../Redux/apis/songs';
+import history from '../history';
 
-function* fetchData() {
+export function* fetchSongsSaga() {
     try {
-        const response = yield call(fetch, 'http://localhost:3001/songs');
-        const data = yield response.json();
-        return data;
-    } catch (e) {
-        console.log(e);
+        const response = yield call(API.getSongs);
+        yield put(fetchSongs(response.data));
+    } catch (err) {
+        console.log(err);
     }
 }
 
-export function* fetchSongsSaga(action) {
-    const data = yield call(fetchData);
-    console.log(data);
-    yield put(fetchSongs(data))
+export function* getSong(action) {
+    try {
+        const { id } = action;
+        const response = yield call(API.getSong, id);
+        yield put(fetchSong(response.data));
+    } catch (err) {
+        console.log(err);
+    }
+}
 
+export function* createPost(action) {
+    try {
+        const { payload } = action;
+        console.log(action);
+
+        const response = yield call(API.addSong, payload);
+        yield put(createSong(response.data));
+        history.push('/')
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+export function* editSongSaga(action) {
+    try {
+        const { payload } = action;
+        console.log(action.payload);
+
+        const response = yield call(API.editSong, payload);
+        // const response = yield call(API.fetchSongs);
+        yield put(editSong(response.data));
+        history.push('/')
+    } catch (err) {
+        console.log(err);
+    }
 }
