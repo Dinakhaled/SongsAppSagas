@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SongForm from './SongForm';
 import { connect } from 'react-redux';
-import { createSong } from '../../Redux/actions';
+import { createSongReq } from '../../Redux/actions';
 
 class CreateNewSong extends Component {
     constructor(props) {
@@ -11,7 +11,7 @@ class CreateNewSong extends Component {
 
 
     onSubmit = (formValues) => {
-        this.props.createSong(formValues);
+        this.props.createSongReq(formValues);
     }
 
     render() {
@@ -24,4 +24,4 @@ class CreateNewSong extends Component {
     }
 }
 
-export default connect(null, { createSong })(CreateNewSong);
+export default connect(null, { createSongReq })(CreateNewSong);
