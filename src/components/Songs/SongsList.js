@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { fetchSongsReq } from '../../Redux/actions';
 
+import { loadLiterals } from "../../Redux/literals";
+import loadLang from "../../i18n";
+
+import store from '../../Redux/Store';
+
 class SongsList extends Component {
     constructor(props) {
         super(props);
@@ -47,9 +52,19 @@ class SongsList extends Component {
         )
     }
 
+    changeLang = () => {
+        let currentLang = localStorage.getItem('lang');
+        currentLang == 'en' ? localStorage.setItem('lang', 'ar') : localStorage.setItem('lang', 'en');
+        currentLang = localStorage.getItem('lang');
+        console.log(currentLang);
+        store.dispatch(loadLiterals(loadLang(currentLang)));
+    }
+
     render() {
         return (
             <React.Fragment>
+                <button onClick={this.changeLang}>change</button>
+                <h1>{this.props.literals.title}</h1>
                 <div className="ui celled list">
                     {this.renderListOfSongs()}
                 </div>
@@ -63,7 +78,7 @@ class SongsList extends Component {
 const mapStateToProps = state => {
     console.log(state);
 
-    return { songs: Object.values(state.songs) };
+    return { songs: Object.values(state.songs), literals: state.literals };
 };
 
 export default connect(
